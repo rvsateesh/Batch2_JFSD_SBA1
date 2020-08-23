@@ -1,7 +1,5 @@
 package com.iiht.evaluation.coronokit.model;
 
-import java.util.List;
-
 public class KitDetail {
 
 	private int id;
