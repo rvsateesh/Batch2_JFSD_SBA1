@@ -10,11 +10,13 @@
 <body>
 <jsp:include page="header.jsp"/>
 <p></p>
-<h4>Here is your order summary!</h4>
 <p></p>
 <button type="button" name="back" onclick="history.go(-2);">Change Order</button>
 <hr/>
 <h5>Hello ${coronaKit.personName }</h5>
+<p></p>
+<h4>Here is your order summary!</h4>
+<p></p>
 <p>Total price of your order is:<strong> ${coronaKit.totalAmount } </strong></p>
 <p>Invoice will be sent to your email-ID:<strong> ${coronaKit.email } </strong></p>
 <p>Shipment tracking will be updated to you on contact:<strong> ${coronaKit.contactNumber } </strong></p>
