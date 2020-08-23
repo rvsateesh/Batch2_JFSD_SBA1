@@ -8,7 +8,10 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<a href="listproducts.jsp" >Back</a>
+<p></p>
+<form action="editproduct?action=list" method="POST">
+	<div><input type="submit" value="<< back"> </div>
+</form>
 <hr/>
 <% String editid = request.getParameter("pid"); %>
 <form action="editproduct?action=editproduct&pid=<%= editid %>" method="POST">
