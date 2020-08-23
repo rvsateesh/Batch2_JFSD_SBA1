@@ -5,15 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.ServletException;
-
 import com.iiht.evaluation.coronokit.model.ProductMaster;
-import com.mysql.cj.jdbc.JdbcConnection;
-
 
 
 public class ProductMasterDao {
@@ -51,7 +46,6 @@ public class ProductMasterDao {
 		try {
 			disconnect();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -60,7 +54,6 @@ public class ProductMasterDao {
 		try {
 			connect();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return jdbcConnection;
@@ -123,7 +116,7 @@ public class ProductMasterDao {
 			psd.setInt(1, productID);
 
 			int rowsCount = pst.executeUpdate();
-			int rowCount = psd.executeUpdate();
+			psd.executeUpdate();
 
 			isDeleted = rowsCount > 0;
 
