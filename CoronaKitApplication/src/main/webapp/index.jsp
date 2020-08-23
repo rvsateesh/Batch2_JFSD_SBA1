@@ -8,17 +8,19 @@
 </head>
 <body>
 <div>
-<jsp:include page="header.jsp"/>
+<h3>Corona Prevention Kit Application</h3>
 <hr/>
-	<h2>Admin Login</h2>
+	<h3>Admin Login</h3>
 	<form action="admin?action=login" method="post">
 		<div>
 			<div><label for="loginid">Enter login Id</label> </div>
 			<div><input type="text" id="loginid" name="loginid"> </div>
+			<p></p>
 		</div>
 		<div>
 			<div><label for="password">Enter password</label> </div>
 			<div><input type="text" id="password" name="password"> </div>
+			<p></p>
 		</div>
 		<div>
 			<div><input type="submit" value="Login"> </div>
@@ -27,6 +29,7 @@
 </div>
 <hr/>
 <div>
+	<h3>User Portal</h3>
 	<a href="newuser.jsp?action=newuser"><button>Create Corona Kit</button></a>
 </div>
 <hr/>	
