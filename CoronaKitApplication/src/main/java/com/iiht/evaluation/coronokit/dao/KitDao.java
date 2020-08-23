@@ -1,12 +1,10 @@
 package com.iiht.evaluation.coronokit.dao;
 
-import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,11 +58,9 @@ public class KitDao {
 	}
 	
 	public static final String GET_ALL_PRODS_QRY = "SELECT pid,pname,pcost,pquantity FROM orderdetails order by pid asc";
-	public static final String INSERT_NEWUSER_QRY = "INSERT INTO userdetails(uname,uemail,ucontact, uaddress) VALUES(?,?,?,?)";
 	public static final String UPD_QTY_QRY = "UPDATE orderdetails SET pquantity = ? where pid =?";
 	public static final String PID_LIST_QRY = "SELECT pid FROM orderdetails order by pid asc";
 	public static final String GET_ALL_ORDERS_QRY = "SELECT pid, pname, pcost, pquantity FROM orderdetails where pquantity > 0";
-	public static final String GET_USER_DETAILS_QRY = "SELECT uname, uemail, ucontact, uaddress FROM userdetails where uid IN(SELECT max(uid) from userdetails)";
 	public static final String GET_TOT_PRICE_QRY = "Select sum(pcost * pquantity) FROM orderdetails";
 	public static final String GET_KIT_DETAIL_QRY = "Select products.pid, orderdetails.pquantity, (products.pcost * orderdetails.pquantity) FROM products, orderdetails where products.pid = orderdetails.pid and orderdetails.pquantity > 0";
 	
@@ -135,23 +131,7 @@ public class KitDao {
 		}
 		return totPrice;
 	}
-	public List<String> getUserDetails() throws ServletException{
-		List<String> userdetails = new ArrayList<>();
-		try {
-			PreparedStatement pst = getJdbcConnection().prepareStatement(GET_USER_DETAILS_QRY);
-			ResultSet rs = pst.executeQuery();
-			
-			while(rs.next()) {
-				userdetails.add(rs.getString(1));
-				userdetails.add(rs.getString(2));
-				userdetails.add(rs.getString(3));
-				userdetails.add(rs.getString(4));
-			}
-		} catch (SQLException e) {
-			throw new ServletException("Getting user details failed!");
-		}
-		return userdetails;
-	}
+	
 	public void updateQuantity(List<String> pids, List<String> quantities) throws ServletException{
 			for (int i=0; i<quantities.size(); i++) {
 				try {
@@ -163,25 +143,6 @@ public class KitDao {
 					throw new ServletException("Update quantities failed!");
 				}
 			}
-	}
-	
-	
-	
-	public void add(String[] userdetails) throws ServletException {
-		if (userdetails != null) {
-			try (PreparedStatement pst = getJdbcConnection().prepareStatement(INSERT_NEWUSER_QRY);) {
-
-				pst.setString(1, userdetails[0]);
-				pst.setString(2, userdetails[1]);
-				pst.setString(3, userdetails[2]);
-				pst.setString(4, userdetails[3]);
-
-				pst.executeUpdate();
-			} catch (SQLException exp) {
-				throw new ServletException("Adding user failed!");
-			}
-		}
-		
 	}
 	
 	public List<ProductMaster> getProductsList() throws ServletException {
