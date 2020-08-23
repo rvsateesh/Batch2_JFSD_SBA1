@@ -1,16 +1,12 @@
 package com.iiht.evaluation.coronokit.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -18,7 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.iiht.evaluation.coronokit.dao.KitDao;
 import com.iiht.evaluation.coronokit.dao.ProductMasterDao;
 import com.iiht.evaluation.coronokit.model.CoronaKit;
@@ -210,9 +205,7 @@ public class UserController extends HttpServlet {
 		return "newuser.jsp";
 	}
 	
-	public boolean validations(String name, String email, String contact, String address) {
-		boolean isValid = false;
-		
+	public boolean validations(String name, String email, String contact, String address) {		
 		return (name!=null && name.length() <= 20 && validateEmail(email) && contact!=null && contact.matches("[1-9][0-9]{9}") && address!=null && address.length() <= 40);
 	}
 	
