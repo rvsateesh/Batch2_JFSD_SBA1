@@ -1,9 +1,7 @@
 package com.iiht.evaluation.coronokit.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -157,26 +155,26 @@ public class AdminController extends HttpServlet {
 	}
 
 	private String showNewProductForm(HttpServletRequest request, HttpServletResponse response) {
-		ProductMaster product = new ProductMaster();
-		product.setProductName(request.getParameter("pname"));
-		product.setCost(Double.parseDouble(request.getParameter("pcost")));
-		product.setProductDescription(request.getParameter("pdesc"));
-
 		String view = "";
-		if(validations(request.getParameter("pname"), Double.parseDouble(request.getParameter("pcost")), request.getParameter("pdesc"))) {
-		try {
-			productMasterDao.add(product);
-			view="listproducts.jsp";
-		} catch (ServletException e) {
-			request.setAttribute("errMsg", e.getMessage());
+			ProductMaster product = new ProductMaster();
+			product.setProductName(request.getParameter("pname"));
+			product.setCost(Double.parseDouble(request.getParameter("pcost")));
+			product.setProductDescription(request.getParameter("pdesc"));
+			
+			if(validations(request.getParameter("pname"), Double.parseDouble(request.getParameter("pcost")), request.getParameter("pdesc"))) {	
+			try {
+				productMasterDao.add(product);
+				view="listproducts.jsp";
+			} catch (ServletException e) {
+				request.setAttribute("errMsg", e.getMessage());
+				view = "errorPage.jsp";
+			}}else {
 			view = "errorPage.jsp";
-		}} else {
-			view = "errPage.jsp";
 			request.setAttribute("errMsg", "</br> Product details are invalid </br>"
 					+ "Product Name should not be null and should be of text format and length should be less than or equal to 20. </br>"
 					+ "Product Cost should not be null and should be of number format. </br>"
 					+ "Product Description should be text format and lenght should be less than or equal to 40 but can be null.");
-		}
+			}
 		listAllProducts(request, response);
 		return view;
 	}
