@@ -14,7 +14,7 @@
 	<div>
 		<label>Name</label> <input type="text" name="Name" maxlength="20" required/>
 		<p></p>
-		<label>Email</label> <input type="email" name="Email" maxlength="20" required/>
+		<label>Email</label> <input type="email" name="Email"required/>
 		<p></p>
 		<label>Contact</label> <input type="text" name="Contact" maxlength="10" required/>		
 		<p></p>
