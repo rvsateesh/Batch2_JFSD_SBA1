@@ -8,7 +8,10 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<a href="listproducts.jsp" >Back</a>
+<p></p>
+<form action="newproduct?action=list" method="POST">
+	<div><input type="submit" value="<< back"> </div>
+</form>
 <hr/>
 
 <form action="newproduct?action=newproduct" method="POST">	
@@ -28,7 +31,7 @@
 			<input type="text" name="pdesc" value="${product.pdesc }" maxlength="40" />
 			<p></p>
 		</div>
-		<button>SAVE</button>
+		<button name="save" value = "save" >SAVE</button>
 </form>
 
 <hr/>	
