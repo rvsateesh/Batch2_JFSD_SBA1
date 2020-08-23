@@ -37,12 +37,18 @@
 							<td>${product.cost }</td>
 							<td>${product.productDescription }</td>
 							<td>
-								<form action="editproduct.jsp?pid=${product.id }" method="post"> 
-									<button name="editproduct" value="editproduct">Edit</button> 
-								</form>
-								<form action="deleteproduct?action=deleteproduct&pid=${product.id }" method="post">
-									<button name="deleteproduct" value="deleteproduct">Delete</button> 
-								</form>							
+							<div style="width:100px;">
+    							<div style="float: left; width: 50px"> 
+									<form action="editproduct.jsp?pid=${product.id }" method="post"> 
+										<button name="editproduct" value="editproduct">Edit</button> 
+									</form>
+								</div>
+    							<div style="float: right; width: 50px">
+									<form action="deleteproduct?action=deleteproduct&pid=${product.id }" method="post">
+										<button name="deleteproduct" value="deleteproduct">Delete</button> 
+									</form>	
+								</div>
+							</div>						
 							</td>
 						</tr>
 					</c:forEach>
